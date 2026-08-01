@@ -7,9 +7,9 @@ from google import genai
 client = genai.Client(api_key=st.secrets["api_key"])
 #api_key = os.getenv("GEMINI_API_KEY")
 
-if not api_key:
-    st.error("⚠️ GEMINI_API_KEY not found. Please check your .env file.")
-    st.stop()
+# if not api_key:
+#     st.error("⚠️ GEMINI_API_KEY not found. Please check your .env file.")
+#     st.stop()
 
 #client = genai.Client(api_key=api_key)
 #model = genai.GenerativeModel("gemini-3.6-flash")
