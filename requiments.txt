@@ -1,2 +1,2 @@
 streamlit
-Google.gemini
+Google.genai
