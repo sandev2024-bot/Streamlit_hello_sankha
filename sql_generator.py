@@ -1,18 +1,22 @@
 import os
 import streamlit as st
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 from google import genai
 
-#load_dotenv()
-client = genai.Client(api_key=st.secrets["api_key"])
-#api_key = os.getenv("GEMINI_API_KEY")
+load_dotenv()
+#client = genai.Client(api_key=st.secrets["api_key"])
+api_key = os.getenv("GEMINI_API_KEY")
 
-# if not api_key:
-#     st.error("⚠️ GEMINI_API_KEY not found. Please check your .env file.")
-#     st.stop()
+# If running on Streamlit Cloud
+if not api_key:
+    api_key = st.secrets.get("GEMINI_API_KEY")
+    st.stop()
 
-#client = genai.Client(api_key=api_key)
-#model = genai.GenerativeModel("gemini-3.6-flash")
+if not api_key:
+    st.error("GEMINI_API_KEY not found.")
+    st.stop()
+client = genai.Client(api_key=api_key)
+#model = genai.GenerativeModel("gemini-3.5-flash-lite")
 
 st.title("🧠 AI SQL Query Generator")
 st.write("Describe your table structure and ask a question in plain English — I'll generate the SQL for you.")
