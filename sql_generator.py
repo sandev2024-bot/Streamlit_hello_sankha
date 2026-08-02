@@ -10,11 +10,12 @@ api_key = os.getenv("GEMINI_API_KEY")
 # If running on Streamlit Cloud
 if not api_key:
     api_key = st.secrets.get("GEMINI_API_KEY")
-    st.stop()
+    
 
 if not api_key:
     st.error("GEMINI_API_KEY not found.")
     st.stop()
+
 client = genai.Client(api_key=api_key)
 #model = genai.GenerativeModel("gemini-3.5-flash-lite")
 
