@@ -55,7 +55,7 @@ with st.sidebar:
     4. Copy the query using the icon in the top-right of the code box.
     """)
     st.markdown("---")
-    st.caption("Powered by Google Gemini 3.6 Flash")
+    st.caption("Powered by Google gemini-3.5-flash-lite")
 if generate_button:
     if schema_input.strip() == "":
         st.error("⚠️ Please describe your table schema first.")
@@ -80,7 +80,7 @@ Rules:
         with st.spinner("Generating SQL query..."):
                         try:
                                 response = client.models.generate_content(
-                                    model="gemini-3.6-flash",
+                                    model="gemini-3.5-flash-lite",
                                     contents=prompt
                                 )
                                 sql_query = response.text.strip()
@@ -95,7 +95,7 @@ Rules:
                                     {sql_query}
                                     """
                                 explanation_response = client.models.generate_content(
-                                    model="gemini-3.6-flash",
+                                    model="gemini-3.5-flash-lite",
                                     contents=explain_prompt
                                 )
                                 explanation = explanation_response.text.strip()
